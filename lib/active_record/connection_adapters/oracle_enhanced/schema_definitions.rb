@@ -6,6 +6,10 @@ module ActiveRecord
       module ColumnMethods
         def primary_key(name, type = :primary_key, **options)
           # This is a placeholder for future :auto_increment support
+          if type.is_a?(Hash)
+            options = type
+            type = :primary_key
+          end
           super
         end
 
